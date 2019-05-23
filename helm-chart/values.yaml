@@ -512,6 +512,8 @@ prometheus:
 ## Kubernetes Cluster Domain
 clusterDomain: cluster.local
 
+namespace: default
+
 ## Pod Disruption Budget
 podDisruptionBudget: {}
   # maxUnavailable: 1
