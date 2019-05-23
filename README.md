@@ -12,6 +12,11 @@ If you want to learn more - read on
 
 - If you do not have helm installed you must install it: https://helm.sh/docs/using_helm/ - I use homebrew. NOTE: You do NOT actually need to run `helm init` as you do not need to hook it up to the k8s cluster to generate the manifests.
 
+### Shell Script With Vault Credentials
+
+Run `./generate_manifests.sh <role_id> <secret_id> <crds_env: {int, demo, prod}>
+
+### No Vault
 - Create a folder in the root of this repo. Example: `mkdir manifests`.
 
 - Run the following command, replacing any secret or username values you'd like. You can also ommit the secrets and they will be automatically generated. Make sure you do not commit the `secret.yaml` manifest to github as it contains secrets.
