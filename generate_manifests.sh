@@ -16,4 +16,4 @@ erlang_cookie=$(echo $secrets | jq -r '.data.data.ERLANG_COOKIE')
 
 mkdir -p manifests
 
-helm template --output-dir manifests --set rabbitmqUsername=$username,rabbitmqPassword=$password,managementUsername=$management_username,managementPassword=$management_password,rabbitmqErlangCookie=$erlang_cookie,namespace=$namespace,fullnameOverride=crds-rabbit  helm-chart/
+helm template --output-dir manifests --namespace $namespace --set rabbitmqUsername=$username,rabbitmqPassword=$password,managementUsername=$management_username,managementPassword=$management_password,rabbitmqErlangCookie=$erlang_cookie,fullnameOverride=crds-rabbit  helm-chart/
