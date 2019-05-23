@@ -1,10 +1,11 @@
-role_id=$1
-secret_id=$2
-environment=$3
+vault_url=$1
+role_id=$2
+secret_id=$3
+environment=$4
 
-client_token=$(curl -s -d "{\"role_id\":\"$role_id\", \"secret_id\":\"$secret_id\"}" -H "Content-Type: application/json" -X POST https://vault.crossroads.net/v1/auth/approle/login | jq -r '.auth.client_token')
+client_token=$(curl -s -d "{\"role_id\":\"$role_id\", \"secret_id\":\"$secret_id\"}" -H "Content-Type: application/json" -X POST $vault_url/v1/auth/approle/login | jq -r '.auth.client_token')
 
-secrets=$(curl -s -H "x-vault-token: ${client_token}" GET https://vault.crossroads.net/v1/kv/data/$environment/rabbit)
+secrets=$(curl -s -H "x-vault-token: ${client_token}" GET $vault_url/v1/kv/data/$environment/rabbit)
 
 username=$(echo $secrets | jq -r '.data.data.USERNAME')
 password=$(echo $secrets | jq -r '.data.data.PASSWORD')
