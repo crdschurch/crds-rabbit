@@ -17,7 +17,7 @@ spec:
     type: {{ .Values.updateStrategy }}
   selector:
     matchLabels:
-       app: {{ template "rabbitmq-ha.fullname" . }}
+       app: {{ template "rabbitmq-ha.name" . }}
   template:
     metadata:
       labels:
